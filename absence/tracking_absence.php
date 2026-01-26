@@ -53,7 +53,24 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 }
 sqlsrv_free_stmt($stmt);
 
-
+//Code update phép tồn
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AutoID'])) {
+  $autoID = (int)$_POST['AutoID'];
+  $value  = isset($_POST['IsUseRemainLeave']) ? 1 : 0;
+  $sql = "
+          UPDATE ASPHRAbsenceMng
+          SET IsUseRemainLeave = ?
+          WHERE AutoID = ?
+          ";
+  $params = [$value, $autoID];
+  $stmt = sqlsrv_query($conn, $sql, $params);
+  if ($stmt === false) {
+    die(print_r(sqlsrv_errors(), true));
+  }
+    // ✅ Redirect lại trang hiện tại
+  header("Location: " . $_SERVER['REQUEST_URI']);
+  exit;
+  }
 ?>
 <!doctype html>
 <html lang="vi">
@@ -256,7 +273,26 @@ sqlsrv_free_stmt($stmt);
       <td class="px-3 py-2 col-type"><?= htmlspecialchars($a['TypeOfAbsence']) ?></td>
       <td class="px-3 py-2 col-reason"><?= htmlspecialchars($a['ReasonOfAbsence']) ?></td>
       <td class="px-3 py-2 text-center">
-        <form method="post" style="display:inline">
+        <?php
+          $today = date('dm'); //vd: 2601
+          $inDateRange = ($today >= '0101' && $today <= '3103');
+
+          $isManagerApproved = (
+            $a['AHDStatus'] == 1 || $a['ABODStatus'] == 1
+          );
+
+          $canUseRemainLeave = $inDateRange && !$isManagerApproved;
+
+          // Thông báo tích phép tồn
+          if(!$inDateRange){
+            $remainLeaveMSG = 'Phép tồn chỉ được sử dụng trong thời gian từ 01/01 đến 31/01';
+          } elseif ($isManagerApproved){
+            $remainLeaveMSG = 'Đơn đã được cấp quản lý duyệt, không thể sử dụng phép tồn.';
+          } else {
+            $remainLeaveMSG = '';
+          }
+        ?>
+        <form method="post" style="display:inline" onsubmit="return checkremainLeave(this);">
           <input type="hidden" name="AutoID" value="<?= $a['AutoID'] ?>">
 
           <input
@@ -265,29 +301,11 @@ sqlsrv_free_stmt($stmt);
             name="IsUseRemainLeave"
             value="1"
             <?= $a['IsUseRemainLeave'] ? 'checked' : '' ?>
+            <?= !$canUseRemainLeave ? 'disabled' : '' ?>
+            data-msg="<?= htmlspecialchars($remainLeaveMSG) ?>"
             onchange="this.form.submit()"
           >
         </form>
-          <?php
-                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AutoID'])) {
-
-                    $autoID = (int)$_POST['AutoID'];
-                    $value  = isset($_POST['IsUseRemainLeave']) ? 1 : 0;
-
-                    $sql = "
-                        UPDATE ASPHRAbsenceMng
-                        SET IsUseRemainLeave = ?
-                        WHERE AutoID = ?
-                    ";
-
-                    $params = [$value, $autoID];
-                    $stmt = sqlsrv_query($conn, $sql, $params);
-
-                    if ($stmt === false) {
-                        die(print_r(sqlsrv_errors(), true));
-                    }
-                }
-                ?>
 <?php
 $hodChecked = $a['AHDStatus'] ? 'checked' : '';
 $bodChecked = $a['ABODStatus'] ? 'checked' : '';
@@ -771,6 +789,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+</script>
+<script>
+  function checkRemainLeave(form) {
+    const cb = form.querySelector('.cb-remainleave');
+
+    if (cb.disabled && cb.dataset.msg) {
+      alert(cb.dataset.msg);
+      return false;
+    }
+    return true;
+  }
 </script>
 </body>
 </html>
