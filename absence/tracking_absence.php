@@ -256,26 +256,45 @@ sqlsrv_free_stmt($stmt);
       <td class="px-3 py-2 col-type"><?= htmlspecialchars($a['TypeOfAbsence']) ?></td>
       <td class="px-3 py-2 col-reason"><?= htmlspecialchars($a['ReasonOfAbsence']) ?></td>
       <td class="px-3 py-2 text-center">
-        <?php
-          $checked  = $a['IsUseRemainLeave'] ? 'checked'  : '';
-          $disabled = !$a['IsUseRemainLeave'] ? 'disabled' : '';
-        ?>
-        <input
-        type="checkbox"
-        class="cb-remainleave remainleave"
-        data-id="<?= $a['AutoID'] ?>"
-        name="remain_leave[<?= $a['AutoID'] ?>]"
-        <?= $checked ?> <?= $disabled ?>
-      />
-    </td>
+        <form method="post" style="display:inline">
+          <input type="hidden" name="AutoID" value="<?= $a['AutoID'] ?>">
+
+          <input
+            type="checkbox"
+            class="cb-remainleave"
+            name="IsUseRemainLeave"
+            value="1"
+            <?= $a['IsUseRemainLeave'] ? 'checked' : '' ?>
+            onchange="this.form.submit()"
+          >
+        </form>
+          <?php
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AutoID'])) {
+
+                    $autoID = (int)$_POST['AutoID'];
+                    $value  = isset($_POST['IsUseRemainLeave']) ? 1 : 0;
+
+                    $sql = "
+                        UPDATE ASPHRAbsenceMng
+                        SET IsUseRemainLeave = ?
+                        WHERE AutoID = ?
+                    ";
+
+                    $params = [$value, $autoID];
+                    $stmt = sqlsrv_query($conn, $sql, $params);
+
+                    if ($stmt === false) {
+                        die(print_r(sqlsrv_errors(), true));
+                    }
+                }
+                ?>
 <?php
 $hodChecked = $a['AHDStatus'] ? 'checked' : '';
 $bodChecked = $a['ABODStatus'] ? 'checked' : '';
 $hrChecked  = $a['HRStatus'] ? 'checked' : '';
 
 // ------------------------------
-// HOD hoặc user có quyền IsHRAbsenceMngEmp
-// ------------------------------
+// HOD hoặc user có quyền IsHRAbsenceMngEmp// ------------------------------
 $hodDisabled = 'disabled';
 if ($a['EmpID'] !== 'ASP1687') {
     if ($_SESSION['IsHRAbsenceMng'] == 1 || $_SESSION['IsHRAbsenceMngEmp'] == 1) {
