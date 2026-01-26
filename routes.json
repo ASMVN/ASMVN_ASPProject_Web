@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "route": "/manage/edit",
+      "rewrite": "/manage/edit_pc.php"
+    },
+    {
+      "route": "/manage/del",
+      "rewrite": "/manage/del_pc.php"
+    },
+    {
+      "route": "/manage/add",
+      "rewrite": "/manage/add_pc.php"
+    },
+    {
+      "route": "/{*path}",
+      "rewrite": "/{path}.php"
+    }
+  ]
+}

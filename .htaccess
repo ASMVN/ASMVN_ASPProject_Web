@@ -1,0 +1,18 @@
+# --- nếu .htaccess ở thư mục gốc ---
+RewriteEngine On
+RewriteBase /web/phep/phepSQLSRV/
+
+# Map /manage/edit → /manage/edit_pc.php
+RewriteRule ^manage/edit/?$   manage/edit_pc.php [L,QSA]
+
+# Map /manage/edit → /manage/del_pc.php
+RewriteRule ^manage/del/?$   manage/del_pc.php [L,QSA]
+
+# Map /manage/edit → /manage/add_pc.php
+RewriteRule ^manage/add/?$   manage/add_pc.php [L,QSA]
+
+
+# Các URL khác vẫn hide .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ $1.php     [L,QSA]
