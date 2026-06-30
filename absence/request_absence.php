@@ -25,7 +25,7 @@ $fullname = $_SESSION['full_name'];
 <div class="max-w-xl w-full bg-white p-8 rounded-2xl shadow-lg">
     <div class="relative mb-4 flex items-center">
         <div class="flex items-center space-x-2">
-        <a href="/web/phep/phepSQLSRV/dashboard"
+        <a href="/dashboard"
            class="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700" title="Menu">
             <i class="fa-solid fa-clipboard-list" style="color: #ffffff;"></i>
         </a>
@@ -86,8 +86,10 @@ $fullname = $_SESSION['full_name'];
                     <option value="U - Phép trừ lương">U - Phép trừ lương</option>
                     <option value="U1 - Phép trừ lương (0.5 ngày)">U1 - Phép trừ lương (0.5 ngày)</option>
                     <option value="S - Phép khám thai">S - Phép khám thai</option>
+                    <option value="S - Nghỉ vợ sinh">S - Nghỉ vợ sinh</option>
                     <option value="X - Phép tang chế">X - Phép tang chế</option>
                     <option value="X - Phép cưới">X - Phép cưới</option>
+                    <option value="X - Phép nghỉ bù">X - Phép nghỉ bù</option>
                 </select> 
         </div>
 
@@ -108,7 +110,7 @@ $fullname = $_SESSION['full_name'];
                     <option value="plan2@airspeedmfgvn.com">Hồ Ngọc Tài - Planning Senior</option>
                     <option value="cs1@airspeedmfgvn.com">Nguyễn Phi Yến - Trưởng Phòng Dịch Vụ Khách Hàng</option>
                     <option value="log1@airspeedmfgvn.com">Nguyễn Hoàng Sang - Trưởng Phòng Xuất Nhập Khẩu</option>
-                    <option value="pu2@airspeedmfgvn.com">Trần Ngọc Quang - Trưởng Phòng Thu Mua</option>
+                    <option value="pu9@airspeedmfgvn.com">Nguyễn Thị Ngọc Dung - Senior Supervisor Buyer</option>
                     <option value="fin1@airspeedmfgvn.com">Phạm Thị Kim Thoa - Kế Toán Trưởng</option>
                     <option value="wh1@airspeedmfgvn.com">Trần Tuấn Anh - Trưởng Phòng Kho Vận</option>
                     <option value="pm@airspeedmfgvn.com">Trần Thanh Hải - Head Of Engineer Cum Production Department</option>
@@ -117,8 +119,11 @@ $fullname = $_SESSION['full_name'];
                     <option value="qa5@airspeedmfgvn.com">Phạm Lưu Đức Hòa - PQA Engineer</option>
                     <option value="qa1@airspeedmfgvn.com">Trần Đức Huy - Quality Manager</option>
                     <option value="qm2@airspeedmfgvn.com">Trần Văn Xuân - Quality Manager</option>
-                    <option value="engineer@airspeedmfgvn.com">Lưu Văn Hùng - Trưởng Bộ Phận Kỹ Thuật</option>
+                    <option value="engineer@airspeedmfgvn.com">Lưu Văn Hùng - Costing Manager</option>
                     <option value="engineer7@airspeedmfgvn.com">Nguyễn Trọng Tín - Engineering Assistant Manager</option>
+                    <option value="engineer16@airspeedmfgvn.com">Nguyễn Hoàng Nam - Tooling Engineer</option>
+                    <option value="hubert.nguyen@airspeedmfgvn.com">Nguyễn Nhật Hùng - Sample Manager</option>
+                    <option value="mcd1@airspeedmfgvn.com">Phạm Anh Khoa - Material Costing Development Manager</option>
                     
                 </select>
             </div>

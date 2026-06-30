@@ -1,6 +1,5 @@
 <?php
  include ("connection.php");
-
 ?>
 
 <!doctype html>
@@ -52,8 +51,11 @@
           <div class="text-center text-lg-start mt-4 pt-2">
             <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
               style="padding-left: 2.5rem; padding-right: 2.5rem;" id="logbtn" name="logbtn">Login</button>
+              <a href="BOM/GuestBOM" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem; display:none;" id="guestbtn" name="guestbtn">Login as Guest</a>
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? Please contact IT Department!</p>
           </div>
+          
 
         </form>
       </div>

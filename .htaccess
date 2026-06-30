@@ -1,6 +1,6 @@
 # --- nếu .htaccess ở thư mục gốc ---
 RewriteEngine On
-RewriteBase /web/phep/phepSQLSRV/
+RewriteBase /site/wwwroot
 
 # Map /manage/edit → /manage/edit_pc.php
 RewriteRule ^manage/edit/?$   manage/edit_pc.php [L,QSA]

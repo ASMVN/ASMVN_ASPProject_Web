@@ -175,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AutoID'])) {
               class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
         <i class="fa-solid fa-trash-can"></i>
       </button>&ensp;
-      <a href="/web/phep/PhepSQLSRV/dashboard"
+      <a href="/dashboard"
       class="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700" title="Menu">
       <i class="fa-solid fa-clipboard-list" style="color: #ffffff;"></i>
     </a>&ensp;

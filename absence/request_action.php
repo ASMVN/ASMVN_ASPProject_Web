@@ -72,13 +72,13 @@ if ($stmt === false) {
           $mail-> Encoding = 'base64';
           //sender $ recipient
           $mail-> setFrom('hronleave@airspeedmfg.com.vn', 'AirspeedMFG - Đơn xin nghỉ phép');
-          $mail-> addAddress('it2@airspeedmfgvn.com');
+          $mail-> addAddress($managermail);
           $ccList = [
-                      // 'hr1@airspeedmfgvn.com',
-                      // 'hr2@airspeedmfgvn.com',
-                      // 'hr3@airspeedmfgvn.com',
-                      // 'ga2@airspeedmfgvn.com'
-                      'makleythien94@gmail.com'
+                      'hr1@airspeedmfgvn.com',
+                      'hr2@airspeedmfgvn.com',
+                      'hr3@airspeedmfgvn.com',
+                      'ga2@airspeedmfgvn.com'
+                      // 'makleythien94@gmail.com'
                     ];
           foreach ($ccList as $cc) {
               $mail->addCC($cc);

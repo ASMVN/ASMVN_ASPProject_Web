@@ -12,7 +12,8 @@ $canAbsenceWorker  = hasPermission($conn, $userid, 'WPOW_U'); // quyền vào tr
 $canASP    = hasPermission($conn, $userid, 'ASP_D'); // quyền tải ứng dụng
 $canLinkQ   = hasPermission($conn, $userid, 'LinkQ_D'); // quyền tải ứng dụng
 $canContract       = hasPermission($conn, $userid, 'HD_U'); // quyền vào trang hợp đồng
-$canBCC            = hasPermission($conn, $userid, 'BCC'); // quyền vào trang hợp đồng
+$canBCC            = hasPermission($conn, $userid, 'BCC'); // quyền vào trang BCC
+$canImport            = hasPermission($conn, $userid, 'Import'); // quyền vào trang ImportMaster
 
 $department = $_GET['dept'] ?? 'HR';
 ?>
@@ -100,9 +101,30 @@ $department = $_GET['dept'] ?? 'HR';
           <p class="text-gray-600 text-sm">Tạo đơn nghỉ phép, xem lịch sử và duyệt đơn.</p>
         </button>
 
+        <!-- Import phép -->
+        <button
+          onclick="<?= $canImport ? "location.href='HRAbsenceMaster/importMaster'" : "noPermission()" ?>"
+          class="bg-white rounded-2xl shadow p-8 text-center transition 
+                 <?= $canImport ? 'hover:shadow-lg hover:-translate-y-1' : 'opacity-60 cursor-not-allowed' ?>">
+          <!-- Icon: Calendar Check -->
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M6.75 3v2.25M17.25 3v2.25M3.75 8.25h16.5M4.5 9.75V19.5A2.25 2.25 0 006.75 21.75h10.5a2.25 2.25 0 002.25-2.25V9.75H4.5z" />
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M9.75 13.5l2.25 2.25L15.75 12" />
+          </svg> -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+            d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
+          </svg>
+
+          <h2 class="text-xl font-semibold mb-2">Thêm Phép</h2>
+          <p class="text-gray-600 text-sm">Cập nhật phép, thêm phép cho nhân viên</p>
+        </button>
+
         <!-- Bảng chấm công -->
          <button
-          onclick="<?= $canBCC ? "location.href='absence/timesheet'" : "noPermission()" ?>"
+          onclick="<?= $canBCC ? "location.href='timesheet/timesheet'" : "noPermission()" ?>"
           class="bg-white rounded-2xl shadow p-8 text-center transition 
                  <?= $canBCC ? 'hover:shadow-lg hover:-translate-y-1' : 'opacity-60 cursor-not-allowed' ?>">
           <!-- Icon: Document signature -->

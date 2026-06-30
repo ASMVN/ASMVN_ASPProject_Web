@@ -350,6 +350,8 @@ document.getElementById('btn-export').addEventListener('click', async () => {
             <label class="block text-sm font-medium mb-1">Phòng ban</label>
             <select name="Department" class="w-full border px-2 py-1 rounded">
               <option value="BOD">BOD</option>
+              <option value="ACC">ACC</option>
+              <option value="MCD">MCD</option>
               <option value="HRGA">HRGA</option>
               <option value="IT">IT</option>
               <option value="QA">QA</option>
@@ -358,9 +360,10 @@ document.getElementById('btn-export').addEventListener('click', async () => {
               <option value="SRC">SOURCING</option>
               <option value="LOG">LOG</option>
               <option value="CS">CS</option>
-              <option value="SALE">SALES</option>
+              <option value="SALES">SALES</option>
               <option value="PU">PU</option>
               <option value="WH">WH</option>
+              <option value="PLANNING">PLANNING</option>
             </select>
           </div>
 
@@ -466,18 +469,20 @@ document.querySelectorAll('#donvi, #loai').forEach(select => {
             <select id="editDepartment" type="text" name="Department" 
                    class="w-full border px-2 py-1 rounded focus:ring focus:ring-blue-200">
                       <option value="BOD">BOD</option>
+                      <option value="ACC">ACC</option>
+                      <option value="MCD">MCD</option>
                       <option value="HRGA">HRGA</option>
                       <option value="IT">IT</option>
                       <option value="QA">QA</option>
                       <option value="PROD">PROD</option>
                       <option value="ENG">ENG</option>
-                      <option value="PLAN">PLAN</option>
                       <option value="SRC">SOURCING</option>
                       <option value="LOG">LOG</option>
-                      <option value="LOG">CS</option>
-                      <option value="SALE">SALES</option>
+                      <option value="CS">CS</option>
+                      <option value="SALES">SALES</option>
                       <option value="PU">PU</option>
                       <option value="WH">WH</option>
+                      <option value="PLANNING">PLANNING</option>
             </select>
           </div>
           <!-- Nhà máy -->

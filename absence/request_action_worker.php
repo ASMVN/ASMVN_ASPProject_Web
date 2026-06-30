@@ -57,7 +57,8 @@
       ,TimeOff
       ,NumDateOff
       ,TypeOfAbsence
-      ,ReasonOfAbsence, TypeEmp)
+      ,ReasonOfAbsence
+      ,TypeEmp)
       VALUES ( ?, ?, ?, ?, ?, ?, ?, 1)";
     
     $params = [$timestamp, $userid , $fullname, $date, $days, $type, $reasonofabsence];
@@ -94,11 +95,14 @@
         $mail -> Encoding = 'base64';
 
         $mail -> setFrom('hronleave@airspeedmfg.com.vn', 'AirspeedMFG - Đơn xin nghỉ phép');
-        $mail -> addAddress('it2@airspeedmfgvn.com');
+        $mail -> addAddress($supemail);
 
         // cc email
         $ccList = [
-            'makleythien94@gmail.com'
+                      'hr1@airspeedmfgvn.com',
+                      'hr2@airspeedmfgvn.com',
+                      'hr3@airspeedmfgvn.com',
+                      'ga2@airspeedmfgvn.com'
         ];
         foreach ($ccList as $cc){
             $mail -> addCC($cc);

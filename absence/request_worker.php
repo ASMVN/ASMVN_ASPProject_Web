@@ -78,17 +78,23 @@ $SupEmpEmail = getSupEmail($conn, $userid);
       <?php endforeach; ?>
     </select>
 
-  <div class="ml-auto flex items-center space-x-2">
     <button type="submit" class="bg-blue-600 hover:bg-blue-700
     text-white px-6 py-2
     rounded-lg font-semibold">
     <i class="fa-solid fa-paper-plane" title="Nộp đơn"></i>
-    </button>
+    </button>&ensp;
+    <a href="/dashboard"
+      class="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700" title="Menu">
+      <i class="fa-solid fa-clipboard-list" style="color: #ffffff;"></i>
+    </a>&ensp;
+          <a href="lookup_absence"
+       class="px-4 py-2 bg-green-600 text-gray-800 rounded hover:bg-green-300">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </a>&ensp;
        <a href="logout"
        class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
       <i class="fa-solid fa-right-from-bracket" style="color: #000000;" title="Logout"></i>
     </a>
-  </div>
 </div>
 <script>
 $(document).ready(function() {
@@ -132,8 +138,10 @@ $(document).ready(function() {
                     <option value="U - Phép trừ lương">U - Phép trừ lương</option>
                     <option value="U1 - Phép trừ lương (0.5 ngày)">U1 - Phép trừ lương (0.5 ngày)</option>
                     <option value="S - Phép khám thai">S - Phép khám thai</option>
+                    <option value="S - Phép vợ sanh">S - Phép vợ sanh</option>
                     <option value="X - Phép tang chế">X - Phép tang chế</option>
                     <option value="X - Phép cưới">X - Phép cưới</option>
+                    <option value="X - Phép nghỉ bù">X - Phép nghỉ bù</option>
                 </select> 
         </div>
     </div>
@@ -161,8 +169,10 @@ $(document).ready(function() {
                     <option value="U - Phép trừ lương">U - Phép trừ lương</option>
                     <option value="U1 - Phép trừ lương (0.5 ngày)">U1 - Phép trừ lương (0.5 ngày)</option>
                     <option value="S - Phép khám thai">S - Phép khám thai</option>
+                    <option value="S - Phép vợ sanh">S - Phép vợ sanh</option>
                     <option value="X - Phép tang chế">X - Phép tang chế</option>
                     <option value="X - Phép cưới">X - Phép cưới</option>
+                    <option value="X - Phép nghỉ bù">X - Phép nghỉ bù</option>
                 </select> 
         </div>
     </div>
@@ -190,8 +200,10 @@ $(document).ready(function() {
                     <option value="U - Phép trừ lương">U - Phép trừ lương</option>
                     <option value="U1 - Phép trừ lương (0.5 ngày)">U1 - Phép trừ lương (0.5 ngày)</option>
                     <option value="S - Phép khám thai">S - Phép khám thai</option>
+                    <option value="S - Phép vợ sanh">S - Phép vợ sanh</option>
                     <option value="X - Phép tang chế">X - Phép tang chế</option>
                     <option value="X - Phép cưới">X - Phép cưới</option>
+                    <option value="X - Phép nghỉ bù">X - Phép nghỉ bù</option>
                 </select> 
         </div>
     </div>
